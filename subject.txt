@@ -1,0 +1,6 @@
+Python
+Maths(DE)
+Data Structure
+COA
+DBMS
+BE
