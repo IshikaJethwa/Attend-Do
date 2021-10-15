@@ -1,6 +1,7 @@
 
 from tkinter import *
 import os
+import tkinter as tk
  
 # Designing window for registration
  
@@ -147,10 +148,34 @@ def delete_user_not_found_screen():
 def main_account_screen():
     global main_screen
     main_screen = Tk()
+    OptionList = [
+    "Admin",
+    "Student",
+    ]
+
     main_screen.geometry("300x250")
     main_screen.title("Account Login")
     Label(text="Select Your Choice", bg="blue", width="300", height="2", font=("Calibri", 13)).pack()
     Label(text="").pack()
+    variable = tk.StringVar(main_screen)
+    variable.set(OptionList[0])
+
+    opt = tk.OptionMenu(main_screen, variable, *OptionList)
+    opt.config(width=90, font=('Helvetica', 12))
+    opt.pack(side="top")
+
+    #Label
+    labelTest = tk.Label(text="", font=('Helvetica', 12), fg='red')
+    labelTest.pack(side="top")
+
+    #Function
+    def callback(*args):
+     labelTest.configure(text="The selected item is {}".format(variable.get()))
+
+    variable.trace("w", callback)
+
+    
+    
     Button(text="Login", height="2", width="30", command = login).pack()
     Label(text="").pack()
     Button(text="Register", height="2", width="30", command=register).pack()
